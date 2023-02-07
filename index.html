@@ -2,16 +2,77 @@
 <html>
 	<head>  
 		<meta charset="utf-8">
-		<title>INSERT TITLE</title>
+		<title>Game Scene Impact</title>
 		<style>
 			body { margin: 0; }	
+
+			.progress-bar-container 
+			{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				width: 100%;
+				height: 100%;
+				background-image: url('./assets/images/4.png');
+				background-color: rgba(0, 0, 0, 0.5);
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+
+			label 
+			{
+				color: white;
+				font-size: 2rem;
+			}
+
+			#progress-bar
+			{
+				width: 20%;
+				margin-top: .5%;
+				height: 2%;
+			}
+
+			.tips 
+			{
+				position: absolute;
+				margin-left: 1%;
+				margin-top: 1%;
+				border-radius: 25px;
+				background-color: rgba(255, 255, 255, 0.3);
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+			p
+			{
+				font-size: medium;
+				text-align: center;
+				font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+				margin: 10%;
+			}
 		</style>
 	</head>
 	<body>
-		<div style="position:absolute; text-align:center ; margin-top:20px; margin-left:10px ;
-		 color: rgb(255, 255, 255); font-size:15px; font-style:oblique; font-family:monospace">
-		<b>🎮First Person Camera Controls</b><br>
-		<b>left click: forward, right click: backward</b>
+		<div class="progress-bar-container">
+		
+			<label for="progress-bar">Loading⏳</label>
+
+			<progress id="progress-bar" value="0" max="100"></progress>
+		</div>
+		<div class="tips">
+			<p><b>Camera Movements</b><br>
+				Mouse L & R: Drag Click to Look<br><br>
+				W,A,S,D: Move Camera<br><br>
+				ARROW KEYS: Camera Look<br><br>
+				R: Up<br>
+				F: Down<br><br>
+				Q: Roll Left<br>
+				E: Roll Right<br>
+			</p>
 		</div>
 		<script type="module" src="./assets/js/main.js"></script>
 	</body>
