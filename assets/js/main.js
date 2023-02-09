@@ -294,7 +294,7 @@ renderer.render( scene, camera );
 }
 animate();
 
-// U S E R  D E F I N E D  F U N C T I O N S
+// 🛟 U S E R  D E F I N E D  F U N C T I O N S 
 function createSeelie(x,y,z) {
     gltfloader.load('./assets/models/seelie/seelie.glb', function(gltfScene) {
         const model = gltfScene.scene;
@@ -306,7 +306,6 @@ function createSeelie(x,y,z) {
                 node.castShadow = true;
         })
         model.castShadow = true;
-        model.recieveShadow = true;
         scene.add(model);
 
         tween1 = new TWEEN.Tween({x: -10, y: 10.4, z: 6.5})
@@ -455,7 +454,7 @@ function createStoneBricks(x,y,z) {
 
 function createStoneBricksCustom(x,y,z,ax,ay,az) {
     const geometry = new THREE.BoxGeometry(1.5,.5,1);
-    const material = new THREE.MeshStandardMaterial({
+    const material = new THREE.MeshLambertMaterial({
         color: 0xffffff,
         map: concreteTexture,
         normalMap: concreteNormal,
@@ -500,7 +499,7 @@ function createToriiGate(x,y,z) {
     })
     model.getObjectByName('Cylinder_torii_0').material.emissive.setHex(0xff3b52);
     model.getObjectByName('Cylinder_torii_0').material.emissiveIntensity = .05;
-    model.recieveShadow = true;
+    model.receiveShadow = true;
     scene.add(model);
     });
 }
@@ -538,32 +537,33 @@ function createBush(x,y,z,width,height,depth) {
         model.getObjectByName('ST_TallBush_ST_Blades_1_Mat_0').material.emissiveIntensity = .4;
         model.getObjectByName('ST_TallBush_ST_Blades_2_Mat_0').material.emissiveIntensity = .2;
         model.castShadow = true;
-        model.recieveShadow = true;
+        model.receiveShadow = true;
         scene.add(model);
         });
 }
 
 function createGrassTop(x,y,z,width,height,depth) {
     const geometry = new THREE.BoxGeometry(width,height,depth)
-    const material = new THREE.MeshStandardMaterial({
+    const material = new THREE.MeshToonMaterial({
         map: grassTexture,
         normalMap: grassNormal,
         bumpMap: grassRoughness,
         aoMap: grassAO,
         emissive: 0x3fff38,
-        emissiveIntensity: .05,
+        emissiveIntensity: .02,
         wireframe: wireframeStatus
     })
     const mesh = new THREE.Mesh(geometry,material)
     mesh.position.set(x,y,z)
-    mesh.castShadow = true;
-    mesh.recieveShadow = true;
     scene.add(mesh)
+
+    mesh.castShadow = true;
+    mesh.receiveShadow = true;
 }
 
 function createStoneStairs (x,y,z) {
     const geometry = new THREE.BoxGeometry(2,.5,3);
-    const material = new THREE.MeshStandardMaterial({
+    const material = new THREE.MeshLambertMaterial({
         color: 0xffffff,
         map: concreteTexture,
         normalMap: concreteNormal,
@@ -593,7 +593,7 @@ function createStoneStairs (x,y,z) {
 
 function createStoneRubble(x,y,z) {
     const geometry = new THREE.BoxGeometry(1.5,.5,1);
-    const material = new THREE.MeshStandardMaterial({
+    const material = new THREE.MeshLambertMaterial({
         color: 0xffffff,
         map: concreteTexture,
         normalMap: concreteNormal,
